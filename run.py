@@ -1,3 +1,8 @@
+#Legend
+# X for placing ships and hit  battleships 
+# ' ' for available space
+# '-' for missed hits
+
 from random import randint
 
 
@@ -20,12 +25,15 @@ def print_board(board):
         row_number += 1
 
 
-def create_ships():
+def create_ships(board):
     """
     Creates the ships on the board
     """
-    pass
-
+    for ship in range(5):
+        ship_row, ship_column = randint(0,7), randint(0,7)
+        while board[ship_row][ship_column] == 'X':
+            ship_row, ship_column = randint(0,7), randint(0,7)
+        board[ship_row][ship_column] = 'X'
 
 def count_hit_ships():
     """
