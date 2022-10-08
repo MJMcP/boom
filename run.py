@@ -62,5 +62,8 @@ def get_ship_location():
 
 create_ships(HIDDEN_BOARD)
 turns = 10
+while turns > 0:
+    print('Welcome to Bomb!')
+
 print_board(HIDDEN_BOARD)
 print_board(GUESS_BOARD)
