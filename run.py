@@ -35,16 +35,6 @@ def create_ships(board):
             ship_row, ship_column = randint(0,7), randint(0,7)
         board[ship_row][ship_column] = 'X'
 
-def count_hit_ships(board):
-    """
-    Counts the hit ships for the score
-    """
-    count = 0
-    for row in board:
-        for column in row:
-            if column == 'X':
-            count += 1
-    return count
 
 def get_ship_location():
     """
@@ -60,10 +50,33 @@ def get_ship_location():
         column = input('Please enter a ship column A-H').upper()
     return int(row) -1, letters_to_numbers[column]
 
+
+def count_hit_ships(board):
+    """
+    Counts the hit ships for the score
+    """
+    count = 0
+    for row in board:
+        for column in row:
+            if column == 'X':
+            count += 1
+    return count
+
+
 create_ships(HIDDEN_BOARD)
 turns = 10
 while turns > 0:
     print('Welcome to Bomb!')
-
+    print_board(GUESS_BOARD)
+    row, column = get_ship_location()
+    if GUESS_BOARD[row][column] == '-':
+        print('You already guessed that')
+    elif GUESS_BOARD[row][column] == 'X':
+        print('Congratulations, you have bombed the ship')
+        GUESS_BOARD[row][column] = 'X'
+        turns -= 1
+    else:
+        print('Sorry! You missed!')
+        GUESS_BOARD[row][column] = '-'
+        turns -= 1
 print_board(HIDDEN_BOARD)
-print_board(GUESS_BOARD)
