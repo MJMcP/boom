@@ -79,4 +79,7 @@ while turns > 0:
         print('Sorry! You missed!')
         GUESS_BOARD[row][column] = '-'
         turns -= 1
+    if count_hit_ships(GUESS_Board) == 5:
+        print('Congratulations. You have bombed all the ships')
+        break
 print_board(HIDDEN_BOARD)
